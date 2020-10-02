@@ -1,6 +1,6 @@
 # mime-type-check ![build](https://travis-ci.com/RocktimSaikia/mime-type-check.svg?branch=master) ![license](https://img.shields.io/github/license/rocktimsaikia/mime-type-check)
 
-> Get the `MIME type` of file by it's extension
+> Get `MIME type` of a file by it's extension
 
 ## Install
 ```bash
@@ -23,7 +23,7 @@ getMimeType('https://rocktim.xyz/images/profile.svg');
 
 ### getMimeType(string)
 
-Get the `MIME type` of file by it's extension
+Get `MIME type` of a file by it's extension
 
 
 
