@@ -1,6 +1,6 @@
 'use strict';
 const path = require('path');
-const mimTypes = require('./mime-types.json');
+const mimeTypes = require('./mime-types.json');
 
 const getMimeType = url => {
 	url = url.trim();
@@ -10,7 +10,7 @@ const getMimeType = url => {
 		throw new Error('Does not contain valid file extension!');
 	}
 
-	return mimTypes[extension];
+	return mimeTypes[extension];
 };
 
 module.exports = url => {
