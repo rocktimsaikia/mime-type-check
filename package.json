@@ -1,0 +1,35 @@
+{
+	"name": "mime-type-check",
+	"version": "1.0.0",
+	"description": "Get MIME type a file by it's extension",
+	"keywords": [
+		"mime",
+		"mime-type",
+		"mime-type-check",
+		"get-mime-type",
+		"mime-type-npm",
+		"mime-type-node"
+	],
+	"repository": "RocktimSaikia/mime-type-check",
+	"license": "MIT",
+	"author": {
+		"name": "Rocktim Saikia",
+		"email": "rocktimthedev@gmail.com",
+		"url": "https://rocktim.xyz"
+	},
+	"files": [
+		"mime-types.json",
+		"inde.d.ts",
+		"index.js"
+	],
+	"scripts": {
+		"test": "xo && ava"
+	},
+	"devDependencies": {
+		"ava": "^3.13.0",
+		"xo": "^0.33.1"
+	},
+	"engines": {
+		"node": ">=12"
+	}
+}
