@@ -19,7 +19,7 @@
 	},
 	"files": [
 		"mime-types.json",
-		"inde.d.ts",
+		"index.d.ts",
 		"index.js"
 	],
 	"scripts": {
