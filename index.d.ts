@@ -1,15 +1,13 @@
 /**
-Get the MIME type of file by it's extension
+Check the all the available `MIME types` of a extension.
 
 @example
 ```
 const getMimeType = require('mime-type-check');
 
-getMimeType('./images/profile.svg');
-//=> 'image/svg+xml'
-
-getMimeType('https://rocktim.xyz/images/profile.svg');
-//=> 'image/svg+xml'
+getMimeType('svg'); //=> ['image/svg+xml']
+getMimeType('png'); //=> ['image/png']
+getMimeType('3gpp') //=> ['audio/3gpp', 'video/3gpp']
 ```
 
 */

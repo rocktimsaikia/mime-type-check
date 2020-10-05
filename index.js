@@ -1,22 +1,31 @@
 'use strict';
-const path = require('path');
-const mimeTypes = require('./mime-types.json');
+const mimeTypes = require('mime-db');
 
-const getMimeType = url => {
-	url = url.trim();
-	const extension = path.extname(url).toLowerCase();
+const getMimeType = extension => {
+	const matchedMimeTypes = [];
 
-	if (extension === '') {
-		throw new Error('Does not contain valid file extension!');
+	for (const type in mimeTypes) {
+		if (Object.prototype.hasOwnProperty.call(mimeTypes[type], 'extensions')) {
+			const {extensions} = mimeTypes[type];
+
+			if (extensions.includes(extension)) {
+				matchedMimeTypes.push(type);
+			}
+		}
 	}
 
-	return mimeTypes[extension];
+	if (matchedMimeTypes.length === 0) {
+		throw new Error('Not a valid extension');
+	}
+
+	return matchedMimeTypes;
 };
 
-module.exports = url => {
-	if (typeof url !== 'string') {
-		throw new TypeError('expected a string, got %s', typeof url);
+module.exports = string => {
+	if (typeof string !== 'string') {
+		throw new TypeError('expected a string, got %s', typeof string);
 	}
 
-	return getMimeType(url);
+	string = string.trim().toLowerCase();
+	return getMimeType(string);
 };

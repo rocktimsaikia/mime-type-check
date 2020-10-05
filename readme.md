@@ -1,8 +1,12 @@
 # mime-type-check ![build](https://travis-ci.com/RocktimSaikia/mime-type-check.svg?branch=master) ![license](https://img.shields.io/github/license/rocktimsaikia/mime-type-check)
 
-> Get `MIME type` of a file by its extension
+> Check all the available `MIME types` of a extension.
 
-See the all the included [MIME types](https://raw.githubusercontent.com/rocktimsaikia/mime-type-check/master/mime-types.json). If you notice any MIME type is missing from [this list](https://github.com/RocktimSaikia/mime-type-check/blob/master/mime-types.json) then do make a pr for that.
+<br>
+
+It uses [Mime-db](https://github.com/jshttp/mime-db) as its core database.<br> 
+Do not use this module to actually check the MIME type of a local or remote file. For that use [File-type](https://github.com/sindresorhus/file-type)
+
 
 ## Install
 ```bash
@@ -14,18 +18,16 @@ npm install mime-type-check
 ```js
 const getMimeType = require('mime-type-check');
 
-getMimeType('./images/profile.svg');
-//=> 'image/svg+xml'
-
-getMimeType('https://rocktim.xyz/images/profile.svg');
-//=> 'image/svg+xml'
+getMimeType('svg'); //=> ['image/svg+xml']
+getMimeType('png'); //=> ['image/png']
+getMimeType('3gpp') //=> ['audio/3gpp', 'video/3gpp']
 ```
 
 ## API
 
 ### getMimeType(string)
 
-Get `MIME type` of a file by it's extension
+`string` is the extension to check the mimetypes for.
 
 ## Support
 

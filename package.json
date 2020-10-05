@@ -31,5 +31,8 @@
 	},
 	"engines": {
 		"node": ">=12"
+	},
+	"dependencies": {
+		"mime-db": "^1.45.0"
 	}
 }
