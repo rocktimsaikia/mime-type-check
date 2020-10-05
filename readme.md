@@ -2,6 +2,8 @@
 
 > Get `MIME type` of a file by it's extension
 
+See the all the included [MIME types](https://raw.githubusercontent.com/rocktimsaikia/mime-type-check/master/mime-types.json). If you notice any MIME type is missing from [this list](https://github.com/RocktimSaikia/mime-type-check/blob/master/mime-types.json) then do make a pr for that.
+
 ## Install
 ```bash
 npm install mime-type-check
@@ -24,6 +26,8 @@ getMimeType('https://rocktim.xyz/images/profile.svg');
 ### getMimeType(string)
 
 Get `MIME type` of a file by it's extension
+
+## Contribution
 
 
 
