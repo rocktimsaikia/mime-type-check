@@ -10,7 +10,10 @@
 		"mime-type-npm",
 		"mime-type-node"
 	],
-	"repository": "RocktimSaikia/mime-type-check",
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/rocktimsaikia/mime-type-check.git"
+	},
 	"license": "MIT",
 	"author": {
 		"name": "Rocktim Saikia",
