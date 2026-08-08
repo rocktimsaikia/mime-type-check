@@ -23,11 +23,7 @@
 		"index.js"
 	],
 	"scripts": {
-		"test": "xo && ava"
-	},
-	"devDependencies": {
-		"ava": "^3.13.0",
-		"xo": "^0.33.1"
+		"test": "node --test"
 	},
 	"engines": {
 		"node": ">=12"
