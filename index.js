@@ -15,7 +15,7 @@ for (const [type, {extensions}] of Object.entries(mimeDb)) {
 
 export default function mimeTypeCheck(extension) {
 	if (typeof extension !== 'string') {
-		throw new TypeError(`Expected a string, got ${typeof extension}`);
+		throw new TypeError(`Expected a string, got ${extension === null ? 'null' : typeof extension}`);
 	}
 
 	// Strip a leading dot so path.extname() output ('.png') works as-is.

@@ -33,4 +33,5 @@ test('throws on an unknown extension', () => {
 
 test('throws on a non-string input', () => {
 	assert.throws(() => mimeTypeCheck(42), {name: 'TypeError', message: 'Expected a string, got number'});
+	assert.throws(() => mimeTypeCheck(null), {name: 'TypeError', message: 'Expected a string, got null'});
 });
