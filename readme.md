@@ -11,8 +11,6 @@ Backed by [mime-db](https://github.com/jshttp/mime-db). This looks up an extensi
 
 Requires Node.js 20 or later. Ships with TypeScript types.
 
-This package is ESM-only, so import it with `import`. `require()` throws `ERR_REQUIRE_ESM` on Node 20.18 and below, and on newer versions returns the module namespace rather than the function itself - meaning `require('mime-type-check')('png')` fails either way.
-
 ```bash
 npm install mime-type-check
 ```
