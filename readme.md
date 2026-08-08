@@ -1,6 +1,6 @@
 # mime-type-check
 
-![CI](https://github.com/RocktimSaikia/mime-type-check/actions/workflows/ci.yml/badge.svg)
+![CI](https://github.com/rocktimsaikia/mime-type-check/actions/workflows/ci.yml/badge.svg)
 ![npm](https://badgen.net/npm/v/mime-type-check)
 
 Check all the available MIME types of an extension.
@@ -10,6 +10,8 @@ Backed by [mime-db](https://github.com/jshttp/mime-db). This looks up an extensi
 ## Installation
 
 Requires Node.js 20 or later. Ships with TypeScript types.
+
+This package is ESM-only, so import it with `import`. `require()` throws `ERR_REQUIRE_ESM` on Node 20.18 and below, and on newer versions returns the module namespace rather than the function itself - meaning `require('mime-type-check')('png')` fails either way.
 
 ```bash
 npm install mime-type-check
@@ -53,7 +55,7 @@ A `TypeError` is thrown only when the argument is not a string, which is a progr
 
 - [**file-type**](https://github.com/sindresorhus/file-type): Detect the file type of a file, stream, or data.
 - [**mime-db**](https://github.com/jshttp/mime-db): Media Type Database.
-- [**meta-fetcher**](https://github.com/RocktimSaikia/meta-fetcher): Scrape metadata from a website URL.
+- [**meta-fetcher**](https://github.com/rocktimsaikia/meta-fetcher): Scrape metadata from a website URL.
 
 ## License
 
