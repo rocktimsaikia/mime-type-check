@@ -17,8 +17,14 @@
 		"email": "rocktimthedev@gmail.com",
 		"url": "https://rocktim.xyz"
 	},
+	"type": "module",
+	"exports": {
+		".": {
+			"types": "./index.d.ts",
+			"default": "./index.js"
+		}
+	},
 	"files": [
-		"mime-types.json",
 		"index.d.ts",
 		"index.js"
 	],
@@ -26,7 +32,7 @@
 		"test": "node --test"
 	},
 	"engines": {
-		"node": ">=12"
+		"node": ">=20"
 	},
 	"dependencies": {
 		"mime-db": "^1.45.0"
