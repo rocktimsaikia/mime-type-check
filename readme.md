@@ -1,13 +1,15 @@
-# mime-type-check ![build](https://travis-ci.com/RocktimSaikia/mime-type-check.svg?branch=master) ![license](https://img.shields.io/github/license/rocktimsaikia/mime-type-check)
+# mime-type-check
 
-> Check all the available `MIME types` of a extension.
+![CI](https://github.com/RocktimSaikia/mime-type-check/actions/workflows/ci.yml/badge.svg)
+![npm](https://badgen.net/npm/v/mime-type-check)
 
-<br>
+Check all the available MIME types of an extension.
 
-It uses [Mime-db](https://github.com/jshttp/mime-db) as its core database.<br>
-Do not use this module to actually check the MIME type of a local or remote file. For that use [File-type](https://github.com/sindresorhus/file-type)
+Backed by [mime-db](https://github.com/jshttp/mime-db). This looks up an extension string, it does not inspect file contents. To detect the real type of a local or remote file, use [file-type](https://github.com/sindresorhus/file-type).
 
-## Install
+## Installation
+
+Requires Node.js 20 or later. Ships with TypeScript types.
 
 ```bash
 npm install mime-type-check
@@ -16,19 +18,29 @@ npm install mime-type-check
 ## Usage
 
 ```js
-const getMimeType = require("mime-type-check");
+import mimeTypeCheck from 'mime-type-check';
 
-getMimeType("svg"); //=> ['image/svg+xml']
-getMimeType("png"); //=> ['image/png']
-getMimeType("3gpp"); //=> ['audio/3gpp', 'video/3gpp']
+mimeTypeCheck('svg');
+mimeTypeCheck('png');
+mimeTypeCheck('3gpp');
 ```
 
-## API
+Output:
 
-### getMimeType(string)
+```js
+['image/svg+xml']
+['image/png']
+['audio/3gpp', 'video/3gpp']
+```
 
-`string` is the extension to check the mimetypes for.
+Pass the extension without a leading dot. Surrounding whitespace and casing are normalized, so `'  PNG  '` and `'png'` are equivalent. Throws a `TypeError` if the argument is not a string, and an `Error` if no MIME type matches the extension.
+
+## Related
+
+- [**file-type**](https://github.com/sindresorhus/file-type): Detect the file type of a file, stream, or data.
+- [**mime-db**](https://github.com/jshttp/mime-db): Media Type Database.
+- [**meta-fetcher**](https://github.com/RocktimSaikia/meta-fetcher): Scrape metadata from a website URL.
 
 ## License
 
-MIT © [Rocktim Saikia](https://rocktim.xyz)
+MIT 2020-2026 &copy; [Rocktim Saikia](https://rocktim.dev)

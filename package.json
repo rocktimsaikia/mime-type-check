@@ -1,7 +1,7 @@
 {
 	"name": "mime-type-check",
 	"version": "2.0.0",
-	"description": "Check all the available MIME types of a extension",
+	"description": "Check all the available MIME types of an extension",
 	"keywords": [
 		"mime",
 		"mime-type",
@@ -15,7 +15,7 @@
 	"author": {
 		"name": "Rocktim Saikia",
 		"email": "rocktimthedev@gmail.com",
-		"url": "https://rocktim.xyz"
+		"url": "https://rocktim.dev"
 	},
 	"type": "module",
 	"exports": {
