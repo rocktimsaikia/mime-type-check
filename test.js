@@ -13,8 +13,19 @@ test('normalizes whitespace and casing', () => {
 	assert.deepEqual(mimeTypeCheck('  PNG  '), ['image/png']);
 });
 
+test('returns results in a stable sorted order', () => {
+	const types = mimeTypeCheck('3gpp');
+	assert.deepEqual(types, [...types].sort());
+});
+
+test('callers cannot mutate the shared index', () => {
+	mimeTypeCheck('png').push('image/bogus');
+	assert.deepEqual(mimeTypeCheck('png'), ['image/png']);
+});
+
 test('throws on an unknown extension', () => {
 	assert.throws(() => mimeTypeCheck('foo'), {message: 'Not a valid extension'});
+	assert.throws(() => mimeTypeCheck(''), {message: 'Not a valid extension'});
 });
 
 test('throws on a non-string input', () => {

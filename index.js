@@ -1,16 +1,30 @@
 import mimeDb from 'mime-db';
 
+// mime-db has ~2500 entries; index them once so a lookup is a Map hit, not a full scan per call.
+const extensionIndex = new Map();
+for (const [type, {extensions}] of Object.entries(mimeDb)) {
+	for (const extension of extensions ?? []) {
+		const types = extensionIndex.get(extension);
+		if (types) {
+			types.push(type);
+		} else {
+			extensionIndex.set(extension, [type]);
+		}
+	}
+}
+
 export default function mimeTypeCheck(extension) {
 	if (typeof extension !== 'string') {
 		throw new TypeError(`Expected a string, got ${typeof extension}`);
 	}
 
 	const normalized = extension.trim().toLowerCase();
-	const matched = Object.keys(mimeDb).filter(type => mimeDb[type].extensions?.includes(normalized));
+	const types = extensionIndex.get(normalized);
 
-	if (matched.length === 0) {
+	if (!types) {
 		throw new Error('Not a valid extension');
 	}
 
-	return matched;
+	// Copy so callers cannot mutate the shared index; sort so the order is a contract, not mime-db's key order.
+	return [...types].sort();
 }
