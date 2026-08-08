@@ -1,4 +1,5 @@
 import assert from 'node:assert/strict';
+import path from 'node:path';
 import test from 'node:test';
 import mimeTypeCheck from './index.js';
 
@@ -9,8 +10,10 @@ test('returns every MIME type for an extension', () => {
 	assert.deepEqual(mimeTypeCheck('3gpp'), ['audio/3gpp', 'video/3gpp']);
 });
 
-test('normalizes whitespace and casing', () => {
+test('normalizes whitespace, casing and a leading dot', () => {
 	assert.deepEqual(mimeTypeCheck('  PNG  '), ['image/png']);
+	assert.deepEqual(mimeTypeCheck('.png'), ['image/png']);
+	assert.deepEqual(mimeTypeCheck(path.extname('photo.PNG')), ['image/png']);
 });
 
 test('returns results in a stable sorted order', () => {

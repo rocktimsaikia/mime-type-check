@@ -18,7 +18,8 @@ export default function mimeTypeCheck(extension) {
 		throw new TypeError(`Expected a string, got ${typeof extension}`);
 	}
 
-	const normalized = extension.trim().toLowerCase();
+	// Strip a leading dot so path.extname() output ('.png') works as-is.
+	const normalized = extension.trim().toLowerCase().replace(/^\./, '');
 	const types = extensionIndex.get(normalized);
 
 	if (!types) {

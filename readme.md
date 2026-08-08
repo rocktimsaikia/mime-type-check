@@ -33,7 +33,15 @@ Output:
 ['audio/3gpp', 'video/3gpp']
 ```
 
-Pass the extension without a leading dot. Surrounding whitespace and casing are normalized, so `'  PNG  '` and `'png'` are equivalent. Throws a `TypeError` if the argument is not a string, and an `Error` if no MIME type matches the extension.
+A leading dot, surrounding whitespace and casing are all normalized, so `'.PNG'` and `'png'` are equivalent and `path.extname()` output works as-is:
+
+```js
+import path from 'node:path';
+
+mimeTypeCheck(path.extname('photo.png')); //=> ['image/png']
+```
+
+Results are sorted alphabetically. Throws a `TypeError` if the argument is not a string, and an `Error` if no MIME type matches the extension.
 
 ## Related
 
