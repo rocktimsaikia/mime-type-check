@@ -41,7 +41,13 @@ import path from 'node:path';
 mimeTypeCheck(path.extname('photo.png')); //=> ['image/png']
 ```
 
-Results are sorted alphabetically. Throws a `TypeError` if the argument is not a string, and an `Error` if no MIME type matches the extension.
+Results are sorted alphabetically. An unrecognized extension returns an empty array rather than throwing, so a miss needs no `try`/`catch`:
+
+```js
+mimeTypeCheck('nope'); //=> []
+```
+
+A `TypeError` is thrown only when the argument is not a string, which is a programming error rather than a lookup result.
 
 ## Related
 

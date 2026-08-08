@@ -94,10 +94,20 @@ describe('return value', () => {
 
 describe('unknown extensions', () => {
 	for (const input of ['foo', '', '   ', '.', '.foo', '..png', 'png.', 'p ng', 'image/png']) {
-		test(`throws on ${JSON.stringify(input)}`, () => {
-			assert.throws(() => mimeTypeCheck(input), {name: 'Error', message: 'Not a valid extension'});
+		test(`returns an empty array for ${JSON.stringify(input)}`, () => {
+			assert.deepEqual(mimeTypeCheck(input), []);
 		});
 	}
+
+	test('never throws for a string, however malformed', () => {
+		assert.doesNotThrow(() => mimeTypeCheck('not an extension at all'));
+	});
+
+	test('returns a fresh empty array each time', () => {
+		const first = mimeTypeCheck('foo');
+		first.push('image/bogus');
+		assert.deepEqual(mimeTypeCheck('foo'), []);
+	});
 });
 
 describe('invalid input types', () => {
@@ -128,5 +138,10 @@ describe('invalid input types', () => {
 
 	test('rejects no argument at all', () => {
 		assert.throws(() => mimeTypeCheck(), {name: 'TypeError', message: 'Expected a string, got undefined'});
+	});
+
+	test('a wrong type is a bug and throws, an unknown extension is data and does not', () => {
+		assert.throws(() => mimeTypeCheck(42));
+		assert.doesNotThrow(() => mimeTypeCheck('42'));
 	});
 });

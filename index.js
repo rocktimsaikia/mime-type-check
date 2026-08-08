@@ -20,11 +20,9 @@ export default function mimeTypeCheck(extension) {
 
 	// Strip a leading dot so path.extname() output ('.png') works as-is.
 	const normalized = extension.trim().toLowerCase().replace(/^\./, '');
-	const types = extensionIndex.get(normalized);
 
-	if (!types) {
-		throw new Error('Not a valid extension');
-	}
+	// An unrecognized extension is an ordinary answer, not an exception; only a non-string argument is a bug.
+	const types = extensionIndex.get(normalized) ?? [];
 
 	// Copy so callers cannot mutate the shared index; sort so the order is a contract, not mime-db's key order.
 	return [...types].sort();
